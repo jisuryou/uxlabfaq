@@ -20,13 +20,13 @@ namespace Microsoft.BotBuilderSamples.Dialog
     public class QnAMakerBaseDialog : QnAMakerDialog
     {
         // Dialog Options parameters
-        public const string DefaultNoAnswer = "No QnAMaker answers found.";
-        public const string DefaultCardTitle = "Did you mean:";
-        public const string DefaultCardNoMatchText = "None of the above.";
-        public const string DefaultCardNoMatchResponse = "Thanks for the feedback.";
+        public const string DefaultNoAnswer = "챗봇이 아직 성장 중이라 잘 못 알아 들었나봐요! ex. 인턴 지원 시기, 인턴 급여 등 간단하게 물어봐주시면 감사해요!";
+        public const string DefaultCardTitle = "방금 물어보신 질문이 여기에 있을까요?";
+        public const string DefaultCardNoMatchText = "없어요:(";
+        public const string DefaultCardNoMatchResponse = "피드백 감사드립니다";
         private readonly IBotServices _services;
         private readonly IConfiguration _configuration;
-		private readonly string DefaultAnswer = "챗봇이 아직 성장 중이라 잘 못 알아 들었나봐요! ex. 인턴 지원 시기, 인턴 급여, 취업 현황 등 간단하게 물어봐주시면 감사해요!";
+	private readonly string DefaultAnswer = "챗봇이 아직 성장 중이라 잘 못 알아 들었나봐요! ex. 인턴 지원 시기, 인턴 급여 등 간단하게 물어봐주시면 감사해요!";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QnAMakerBaseDialog"/> class.
