@@ -44,7 +44,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"안녕하세요 UX lab 연구실 챗봇입니다. 챗봇이 아직 성장 중이라 정확하지 않은 답변이 있을 수도 있어요! 해결되지 않은 질문들은 이메일을 통해 문의주세요!"), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text($"안녕하세요 UX lab 연구실 챗봇입니다. 챗봇이 아직 성장 중이라 정확하지 않은 답변이 있을 수도 있어요! 해결되지 않은 질문들은 'snuxlab@gamil.com'을 통해 문의주세요!"), cancellationToken);
                 }
             }
         }
