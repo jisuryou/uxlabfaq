@@ -11,7 +11,6 @@ using Microsoft.BotBuilderSamples.Dialog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Bot.Builder.Azure.Blobs;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -50,13 +49,6 @@ namespace Microsoft.BotBuilderSamples
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.AddTransient<IBot, QnABot<RootDialog>>();
             
-            //Use Azure Blob storage, instead of in-memory storage.
-            services.AddSingleton<IStorage>(
-                new BlobsStorage(
-                    Configuration.GetValue<string>("dataConnectionString"),
-                    Configuration.GetValue<string>("containerName")
-            ));
-
             ComponentRegistration.Add(new DialogsComponentRegistration());
         }
 
