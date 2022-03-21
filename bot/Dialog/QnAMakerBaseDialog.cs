@@ -33,10 +33,13 @@ namespace Microsoft.BotBuilderSamples.Dialog
         /// Dialog helper to generate dialogs.
         /// </summary>
         /// <param name="services">Bot Services.</param>
-        public QnAMakerBaseDialog(IBotServices services, IConfiguration configuration): base()
+        public QnAMakerBaseDialog(IBotServices services, IConfiguration configuration, IBotTelemetryClient telemetryClient): base()
         {
             this._configuration = configuration;
             this._services = services;
+	    
+	    // Set the telemetry client for this and all child dialogs
+            this.TelemetryClient = telemetryClient;
 
             if (!string.IsNullOrWhiteSpace(configuration["DefaultAnswer"]))
             {
