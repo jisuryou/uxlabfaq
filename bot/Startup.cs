@@ -67,10 +67,18 @@ namespace Microsoft.BotBuilderSamples
             services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
 
             // Create the telemetry middleware to initialize telemetry gathering
-            services.AddSingleton<TelemetryInitializerMiddleware>();
+            services.AddSingleton<TelemetryInitializerMiddleware>(sp =>
+            {
+                var loggerMiddleware = sp.GetService<TelemetryLoggerMiddleware>();
+                return new TelemetryInitializerMiddleware(loggerMiddleware, logActivityTelemetry: true);
+            });
 
             // Create the telemetry middleware (used by the telemetry initializer) to track conversation events
-            services.AddSingleton<TelemetryLoggerMiddleware>();
+            services.AddSingleton<TelemetryLoggerMiddleware>(sp =>
+            {
+                var telemetryClient = sp.GetService<IBotTelemetryClient>();
+                return new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
+            });
             
             
             ComponentRegistration.Add(new DialogsComponentRegistration());
