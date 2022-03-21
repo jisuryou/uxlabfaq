@@ -16,6 +16,8 @@ namespace Microsoft.BotBuilderSamples
         public AdapterWithErrorHandler(IConfiguration configuration, IHttpClientFactory httpClientFactory, ILogger<IBotFrameworkHttpAdapter> logger, ConversationState conversationState = default)
             : base(configuration, httpClientFactory, logger)
         {
+            Use(telemetryInitializerMiddleware);
+            
             OnTurnError = async (turnContext, exception) =>
             {
                 // Log any leaked exception from the application.
