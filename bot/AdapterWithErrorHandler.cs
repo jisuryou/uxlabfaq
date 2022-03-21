@@ -9,6 +9,8 @@ using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
+using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core
+
 namespace Microsoft.BotBuilderSamples
 {
     public class AdapterWithErrorHandler : CloudAdapter
